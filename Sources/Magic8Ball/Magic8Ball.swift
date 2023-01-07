@@ -14,27 +14,52 @@ public struct Magic8Ball {
             "Most likely", "Outlook good",
             "Yes", "Signs point to yes"]
         
+        let flavorText: [String] = [
+            "Ah, yes! I have your answer...",
+            "Hmm... it's coming to me.",
+            "The mist is clearing...ah, yes.",
+            "...huh, I didn't expect this outcome.",
+            "The spirits have given unto me your answer.",
+            "I hope you're truly ready to receive this.",
+            "My spidey sense are tingling..."]
+        
         // Introduction to user
         print("\nHey there! I'm your friendly neighborhood Magic 8 Ball."
               + "\nI've got answers to all of your questions."
               + "\nWhy don't you take me for a spin?")
-        print("\nTo shake me up, you'll need to think of a question first."
-              + "\nGot one? Good!"
-              + "\n\nNow, hold it in your mind. Concentrate on it.")
+        print("\nTo shake me up, you'll need to think of a question first.")
+        
         
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) ??
-
-        
-        print("\n\nOkay. Ready? Let's do this!\n")
         
         // The loop in which we give answers and prompt for user input
         var shouldQuit: Bool = false
         while !shouldQuit {
+            // Prompt for question
+            print("\nWhat's your question?")
+            if let question = readLine() {
+                if question.count > 100 {
+                    print("\nProfound. Truly profound.")
+                } else if question.count > 50 {
+                    print("\nHuh. I never thought of that before.")
+                } else if question.count > 20 {
+                    print("\nThat's a good question!")
+                } else if question.count > 10 {
+                    print("\nOkay. I see it. I hear you.")
+                } else if question.count < 5 {
+                    print("\nI'm not sure that's a question, but I'll take it.")
+                }
+            }
+            
+            print("\n\nNow, hold it in your mind. Concentrate on it.")
+            print("\n\nOkay. Ready?\n")
+            
             print("\nShaking...")
             print("\nShaking........")
             print("\nShaking.................\n\n\n")
             
-            print("Ah! Yes! I have your answer...\n\n")
+            print(flavorText.randomElement() ?? "\nAh! Yes! I have your answer...")
+            print("\n")
             print("~~~~~~~~")
             print(answers.randomElement() ?? "\nCome back later")
             print("~~~~~~~~")
